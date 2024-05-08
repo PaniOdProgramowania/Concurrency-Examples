@@ -1,4 +1,4 @@
-package pl.paniodprogramowania.concurrencyexamples.effectivejava.threadstoppingeacherother.inthebook.counter;
+package pl.paniodprogramowania.concurrencyexamples.effectivejava.counter;
 
 public class BetterCounter {
   // zmiany to dodanie synchronised oraz usunięcie volatile

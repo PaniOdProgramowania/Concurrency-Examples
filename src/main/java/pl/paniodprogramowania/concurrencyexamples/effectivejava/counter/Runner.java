@@ -1,11 +1,10 @@
-package pl.paniodprogramowania.concurrencyexamples.effectivejava.threadstoppingeacherother.inthebook.counter;
+package pl.paniodprogramowania.concurrencyexamples.effectivejava.counter;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import pl.paniodprogramowania.concurrencyexamples.raceconditions.SumNumbrsWithGettersAndSettersNoSync;
 
 public class Runner {
   public static void main(String[] args) throws InterruptedException {

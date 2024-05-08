@@ -1,4 +1,4 @@
-package pl.paniodprogramowania.concurrencyexamples.effectivejava.threadstoppingeacherother.inthebook.stoppingthread;
+package pl.paniodprogramowania.concurrencyexamples.effectivejava.threadstoppingeacherother.stoppingthread;
 
 import java.util.concurrent.TimeUnit;
 
