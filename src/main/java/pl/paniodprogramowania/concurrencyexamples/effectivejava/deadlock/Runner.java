@@ -9,7 +9,8 @@ import pl.paniodprogramowania.concurrencyexamples.effectivejava.threadstoppingea
 public class Runner {
 
   public static void main(String[] args) throws InterruptedException {
-    MainThread mainThread = new MainThread();
+//    MainThread mainThread = new MainThread();
+    CorrectedMainThread mainThread = new CorrectedMainThread();
 
     List<String> jewels = List.of(
         "Gold", "Silver", "Platinum", "Diamond", "necklace",

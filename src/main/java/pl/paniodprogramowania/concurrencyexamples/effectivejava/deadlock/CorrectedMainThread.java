@@ -6,14 +6,15 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-// przykład deadlocka
-public class MainThread {
+public class CorrectedMainThread {
 
   private List<String> valueableList = new ArrayList<>();
 
-  public synchronized void addToList(String newValue) {
-    valueableList.add(newValue);
-    valueableList.add("Necklace" + newValue);
+  public void addToList(String newValue) {
+    synchronized (valueableList) {
+      valueableList.add(newValue);
+      valueableList.add("Necklace" + newValue);
+    }
     System.out.println(Thread.currentThread() + "added " + newValue + " and Necklace" + newValue);
 
     Thread deleteJewelsThread = new Thread(() -> {
