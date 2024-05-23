@@ -12,16 +12,17 @@ public class Crossroad {
 
   // błędne
   public synchronized void addCarTurningLeft(Car car) {
-    System.out.println(Thread.currentThread() + " turning left");
-    try (ExecutorService service = Executors.newFixedThreadPool(3)) {
-      service.submit(() -> {
-        while (carsTurningRight.size() >= 5) {
-          this.removeCarTurningRight(carsTurningRight.get(0));
-        }
-      });
-      service.close();
-    }
-    carsFromAheadThatAreTurningLeft.add(car);
+      System.out.println(Thread.currentThread() + " turning left");
+      try (ExecutorService service = Executors.newFixedThreadPool(3)) {
+        service.submit(() -> {
+          while (carsTurningRight.size() >= 5) {
+            this.removeCarTurningRight(carsTurningRight.get(0));
+          }
+        });
+        service.close();
+      }
+      carsFromAheadThatAreTurningLeft.add(car);
+
   }
 
   public synchronized void addCarTurningRight(Car car) {

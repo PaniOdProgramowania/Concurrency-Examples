@@ -7,8 +7,22 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class Runner {
+
+  public static final int LOOPS = 100_000;
+
   public static void main(String[] args) throws InterruptedException {
+    long before = System.nanoTime();
     usageOfBestWay();
+    long after = System.nanoTime();
+    long beforeBetter = System.nanoTime();
+    usageOfBestWay();
+    long afterBetter = System.nanoTime();
+    long beforeBest = System.nanoTime();
+    usageOfBestWay();
+    long afterBest = System.nanoTime();
+    System.out.println("1st: " + (after - before));
+    System.out.println("better: " + (afterBetter - beforeBetter));
+    System.out.println("best: " + (afterBest - beforeBest));
   }
 
   private static void usageOfBadWay() throws InterruptedException {
@@ -22,18 +36,21 @@ public class Runner {
       synchronized (Runner.class) {
         var result = numbers.add(id);
         if (!result) {
-          System.out.println("duplicate");
+          System.out.println("duplicate " + id);
         }
       }
     });
 
+    long before = System.nanoTime();
     try (ExecutorService service = Executors.newFixedThreadPool(3)) {
-      for (int i = 0; i < 1000; i++) {
+      for (int i = 0; i < LOOPS; i++) {
         service.submit(task);
       }
 
+
+
       service.awaitTermination(1000, TimeUnit.MILLISECONDS);
-      System.out.println(numbers.size());
+      System.out.println(numbers);
     }
   }
 
@@ -54,7 +71,7 @@ public class Runner {
     });
 
     try (ExecutorService service = Executors.newFixedThreadPool(3)) {
-      for (int i = 0; i < 1000; i++) {
+      for (int i = 0; i < LOOPS; i++) {
         service.submit(task);
       }
 
@@ -80,7 +97,7 @@ public class Runner {
     });
 
     try (ExecutorService service = Executors.newFixedThreadPool(3)) {
-      for (int i = 0; i < 1000; i++) {
+      for (int i = 0; i < LOOPS; i++) {
         service.submit(task);
       }
 
